@@ -98,6 +98,33 @@ export const galleryImages = [
 // Each pair must be the same job/room, shot from roughly the same angle —
 // otherwise the comparison misrepresents the work. Leave empty until real
 // matched photos are available.
-// Example shape:
-// { beforeSrc: '/images/before-after/kitchen-before.png', afterSrc: '/images/before-after/kitchen-after.png', beforeAlt: '...', afterAlt: '...', label: 'Kitchen Remodel' }
-export const beforeAfterPairs = [];
+export const beforeAfterPairs = [
+  {
+    beforeSrc: '/images/gallery/DrywallRepair1_before.jpg',
+    afterSrc: '/images/gallery/DrywallRepair1_after.jpg',
+    beforeAlt: 'Cracked ceiling seam near a light fixture before repair',
+    afterAlt: 'Ceiling seam sanded, blended, and repaired',
+    label: 'Ceiling Seam & Crack Repair',
+  },
+  {
+    beforeSrc: '/images/gallery/DrywallRepair2_before.jpg',
+    afterSrc: '/images/gallery/DrywallRepair2_after.jpg',
+    beforeAlt: 'Damaged ceiling corner seam before repair',
+    afterAlt: 'Repaired ceiling corner, smooth and blended',
+    label: 'Ceiling Seam & Crack Repair',
+  },
+  {
+    beforeSrc: '/images/gallery/DrywallRepair3_before.jpg',
+    afterSrc: '/images/gallery/DrywallRepair3_after.jpg',
+    beforeAlt: 'Hairline crack along the ceiling before repair',
+    afterAlt: 'Ceiling crack repaired and texture matched',
+    label: 'Ceiling Seam & Crack Repair',
+  },
+  {
+    beforeSrc: '/images/gallery/DrywallRepair4_before.jpg',
+    afterSrc: '/images/gallery/DrywallRepair4_after.jpg',
+    beforeAlt: 'Ceiling seam crack before repair',
+    afterAlt: 'Ceiling seam repaired and blended',
+    label: 'Ceiling Seam & Crack Repair',
+  },
+];
