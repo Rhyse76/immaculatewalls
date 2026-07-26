@@ -20,8 +20,10 @@ import { services } from '../data/site.js';
   <section class="section section-alt">
     <div class="container">
       <div class="grid grid-3">
-        {services.map((service) => (
-          <ServiceCard title={service.title} description={service.description} />
+        {services.map((service, i) => (
+          <div data-reveal style={`--reveal-delay: ${(i % 3) * 90}ms`}>
+            <ServiceCard title={service.title} description={service.description} />
+          </div>
         ))}
       </div>
     </div>

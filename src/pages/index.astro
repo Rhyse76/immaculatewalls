@@ -47,8 +47,10 @@ const featuredImages = galleryImages.slice(0, 3);
         </p>
       </div>
       <div class="grid grid-3">
-        {featuredServices.map((service) => (
-          <ServiceCard title={service.title} description={service.description} />
+        {featuredServices.map((service, i) => (
+          <div data-reveal style={`--reveal-delay: ${(i % 3) * 90}ms`}>
+            <ServiceCard title={service.title} description={service.description} />
+          </div>
         ))}
       </div>
       <div class="services-more">
@@ -64,8 +66,13 @@ const featuredImages = galleryImages.slice(0, 3);
         <h2>A look at what we've been building</h2>
       </div>
       <div class="grid grid-3 work-grid">
-        {featuredImages.map((image) => (
-          <a href={withBase('/projects')} class="work-item card">
+        {featuredImages.map((image, i) => (
+          <a
+            href={withBase('/projects')}
+            class="work-item card"
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 90}ms`}
+          >
             <img src={withBase(image.src)} alt={image.alt} />
             <span class="work-tag">{image.category}</span>
           </a>
@@ -84,8 +91,10 @@ const featuredImages = galleryImages.slice(0, 3);
         <h2>Trusted by homeowners across the area</h2>
       </div>
       <div class="grid grid-3">
-        {testimonials.map((t) => (
-          <Testimonial quote={t.quote} name={t.name} />
+        {testimonials.map((t, i) => (
+          <div data-reveal style={`--reveal-delay: ${(i % 3) * 90}ms`}>
+            <Testimonial quote={t.quote} name={t.name} />
+          </div>
         ))}
       </div>
     </div>

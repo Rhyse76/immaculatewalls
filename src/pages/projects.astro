@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
-import { galleryImages, site } from '../data/site.js';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+import { galleryImages, beforeAfterPairs, site } from '../data/site.js';
 import { withBase } from '../utils/paths.js';
 
 const categories = ['All', ...new Set(galleryImages.map((img) => img.category))];
@@ -20,6 +21,31 @@ const categories = ['All', ...new Set(galleryImages.map((img) => img.category))]
     </div>
   </section>
 
+  {beforeAfterPairs.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Side By Side</span>
+          <h2>Before &amp; After</h2>
+          <p>Drag the slider to see the difference.</p>
+        </div>
+        <div class="grid grid-2">
+          {beforeAfterPairs.map((pair) => (
+            <div data-reveal>
+              <BeforeAfterSlider
+                beforeSrc={pair.beforeSrc}
+                afterSrc={pair.afterSrc}
+                beforeAlt={pair.beforeAlt}
+                afterAlt={pair.afterAlt}
+              />
+              {pair.label && <p class="ba-label">{pair.label}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="section section-alt">
     <div class="container">
       <div class="filter-bar" role="tablist" aria-label="Filter projects by category">
@@ -35,8 +61,13 @@ const categories = ['All', ...new Set(galleryImages.map((img) => img.category))]
       </div>
 
       <div class="grid grid-3 gallery-grid" id="gallery-grid">
-        {galleryImages.map((image) => (
-          <figure class="gallery-item card" data-category={image.category}>
+        {galleryImages.map((image, i) => (
+          <figure
+            class="gallery-item card"
+            data-category={image.category}
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 90}ms`}
+          >
             <img src={withBase(image.src)} alt={image.alt} loading="lazy" />
             <figcaption>
               <span class="work-tag">{image.category}</span>
@@ -127,6 +158,13 @@ const categories = ['All', ...new Set(galleryImages.map((img) => img.category))]
 
   .gallery-item.hidden {
     display: none;
+  }
+
+  .ba-label {
+    margin-top: 0.75rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-navy);
   }
 </style>
 

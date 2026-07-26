@@ -1,0 +1,40 @@
+---
+import { withBase } from '../utils/paths.js';
+
+interface Props {
+  beforeSrc: string;
+  afterSrc: string;
+  beforeAlt: string;
+  afterAlt: string;
+}
+const { beforeSrc, afterSrc, beforeAlt, afterAlt } = Astro.props;
+---
+
+<div class="ba-slider" style="--pos: 50%">
+  <img class="ba-img ba-after" src={withBase(afterSrc)} alt={afterAlt} loading="lazy" />
+  <img class="ba-img ba-before" src={withBase(beforeSrc)} alt={beforeAlt} loading="lazy" />
+  <div class="ba-divider"></div>
+  <div class="ba-handle"></div>
+  <span class="ba-tag ba-tag-before">Before</span>
+  <span class="ba-tag ba-tag-after">After</span>
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    class="ba-range"
+    aria-label={`Before and after comparison: ${beforeAlt} vs ${afterAlt}`}
+  />
+</div>
+
+<script>
+  const sliders = document.querySelectorAll<HTMLElement>('.ba-slider');
+
+  sliders.forEach((slider) => {
+    const range = slider.querySelector<HTMLInputElement>('.ba-range');
+    if (!range) return;
+    range.addEventListener('input', () => {
+      slider.style.setProperty('--pos', `${range.value}%`);
+    });
+  });
+</script>

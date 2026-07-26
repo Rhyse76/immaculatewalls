@@ -94,3 +94,10 @@ export const galleryImages = [
     category: 'Drywall',
   },
 ];
+
+// Each pair must be the same job/room, shot from roughly the same angle —
+// otherwise the comparison misrepresents the work. Leave empty until real
+// matched photos are available.
+// Example shape:
+// { beforeSrc: '/images/before-after/kitchen-before.png', afterSrc: '/images/before-after/kitchen-after.png', beforeAlt: '...', afterAlt: '...', label: 'Kitchen Remodel' }
+export const beforeAfterPairs = [];
