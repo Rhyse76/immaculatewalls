@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --color-bg: #faf7f2;
-  --color-bg-alt: #f0ece3;
+  --color-bg: #eef0f1;
+  --color-bg-alt: #e2e5e8;
   --color-surface: #ffffff;
-  --color-text: #2a2622;
-  --color-text-muted: #6b6459;
+  --color-text: #24262b;
+  --color-text-muted: #666b72;
   --color-navy: #1c2b33;
   --color-navy-light: #2c4250;
-  --color-accent: #c9762f;
-  --color-accent-dark: #a85f22;
-  --color-border: #e5ddd0;
+  --color-accent: #3d7bc4;
+  --color-accent-dark: #2c5c92;
+  --color-gold: #b5945e;
+  --color-border: #d8dbde;
 
   --font-heading: 'Outfit', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -118,7 +119,7 @@ img {
 .btn-primary {
   background: var(--color-accent);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(201, 118, 47, 0.35);
+  box-shadow: 0 6px 18px rgba(61, 123, 196, 0.35);
 }
 
 .btn-primary:hover {
@@ -137,12 +138,12 @@ img {
 
 .btn-outline {
   background: transparent;
-  border-color: var(--color-navy);
-  color: var(--color-navy);
+  border-color: var(--color-accent);
+  color: var(--color-accent-dark);
 }
 
 .btn-outline:hover {
-  background: var(--color-navy);
+  background: var(--color-accent);
   color: #fff;
 }
 
