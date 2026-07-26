@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site.js';
+import { withBase } from '../utils/paths.js';
 const year = new Date().getFullYear();
 ---
 
@@ -24,9 +25,9 @@ const year = new Date().getFullYear();
 
     <div class="footer-col">
       <h4>Explore</h4>
-      <a href="/services">Services</a>
-      <a href="/projects">Projects</a>
-      <a href="/contact">Get a Free Quote</a>
+      <a href={withBase('/services')}>Services</a>
+      <a href={withBase('/projects')}>Projects</a>
+      <a href={withBase('/contact')}>Get a Free Quote</a>
     </div>
   </div>
 

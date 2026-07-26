@@ -4,6 +4,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CTASection from '../components/CTASection.astro';
 import { site, services, testimonials, galleryImages } from '../data/site.js';
+import { withBase } from '../utils/paths.js';
 
 const featuredServices = services.slice(0, 6);
 const featuredImages = galleryImages.slice(0, 3);
@@ -21,13 +22,13 @@ const featuredImages = galleryImages.slice(0, 3);
           drywall, textures, and painting done right the first time.
         </p>
         <div class="hero-actions">
-          <a href="/contact" class="btn btn-primary">Get a Free Quote</a>
-          <a href="/projects" class="btn btn-outline">See Our Work</a>
+          <a href={withBase('/contact')} class="btn btn-primary">Get a Free Quote</a>
+          <a href={withBase('/projects')} class="btn btn-outline">See Our Work</a>
         </div>
       </div>
       <div class="hero-media">
         <img
-          src="/images/gallery/texture-spray-application.png"
+          src={withBase('/images/gallery/texture-spray-application.png')}
           alt="Applying knockdown texture to an interior wall"
           class="hero-image"
         />
@@ -51,7 +52,7 @@ const featuredImages = galleryImages.slice(0, 3);
         ))}
       </div>
       <div class="services-more">
-        <a href="/services" class="btn btn-outline">View All Services</a>
+        <a href={withBase('/services')} class="btn btn-outline">View All Services</a>
       </div>
     </div>
   </section>
@@ -64,14 +65,14 @@ const featuredImages = galleryImages.slice(0, 3);
       </div>
       <div class="grid grid-3 work-grid">
         {featuredImages.map((image) => (
-          <a href="/projects" class="work-item card">
-            <img src={image.src} alt={image.alt} />
+          <a href={withBase('/projects')} class="work-item card">
+            <img src={withBase(image.src)} alt={image.alt} />
             <span class="work-tag">{image.category}</span>
           </a>
         ))}
       </div>
       <div class="services-more">
-        <a href="/projects" class="btn btn-outline">See All Projects</a>
+        <a href={withBase('/projects')} class="btn btn-outline">See All Projects</a>
       </div>
     </div>
   </section>

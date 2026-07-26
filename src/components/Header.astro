@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site.js';
+import { withBase } from '../utils/paths.js';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -8,12 +9,20 @@ const navItems = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
-const currentPath = Astro.url.pathname;
+
+// Strip the base path so nav-item hrefs ('/', '/services', ...) can be
+// compared directly against the current route regardless of deployment base.
+const rawBase = import.meta.env.BASE_URL;
+const baseNoSlash = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+const strippedPath = baseNoSlash && Astro.url.pathname.startsWith(baseNoSlash)
+  ? Astro.url.pathname.slice(baseNoSlash.length) || '/'
+  : Astro.url.pathname;
+const currentPath = strippedPath.length > 1 ? strippedPath.replace(/\/$/, '') : '/';
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href="/" class="brand">
+    <a href={withBase('/')} class="brand">
       <span class="brand-mark">IW</span>
       <span class="brand-text">
         <span class="brand-name">{site.shortName}</span>
@@ -24,7 +33,7 @@ const currentPath = Astro.url.pathname;
     <nav class="nav-desktop" aria-label="Primary">
       {navItems.map((item) => (
         <a
-          href={item.href}
+          href={withBase(item.href)}
           class:list={['nav-link', { active: currentPath === item.href }]}
         >
           {item.label}
@@ -45,7 +54,7 @@ const currentPath = Astro.url.pathname;
 
     <nav class="nav-mobile" aria-label="Mobile">
       {navItems.map((item) => (
-        <a href={item.href} class:list={['nav-link', { active: currentPath === item.href }]}>
+        <a href={withBase(item.href)} class:list={['nav-link', { active: currentPath === item.href }]}>
           {item.label}
         </a>
       ))}

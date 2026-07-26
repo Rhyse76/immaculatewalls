@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 import { galleryImages, site } from '../data/site.js';
+import { withBase } from '../utils/paths.js';
 
 const categories = ['All', ...new Set(galleryImages.map((img) => img.category))];
 ---
@@ -36,7 +37,7 @@ const categories = ['All', ...new Set(galleryImages.map((img) => img.category))]
       <div class="grid grid-3 gallery-grid" id="gallery-grid">
         {galleryImages.map((image) => (
           <figure class="gallery-item card" data-category={image.category}>
-            <img src={image.src} alt={image.alt} loading="lazy" />
+            <img src={withBase(image.src)} alt={image.alt} loading="lazy" />
             <figcaption>
               <span class="work-tag">{image.category}</span>
             </figcaption>

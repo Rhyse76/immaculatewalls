@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
 
-// When a custom domain (e.g. immaculatewalls.com) is attached via GitHub Pages
-// CNAME, `site` should be the domain root and `base` should stay '/'.
-// If instead this is served from https://rhyse76.github.io/immaculatewalls/
-// with no custom domain, change `base` to '/immaculatewalls'.
+// Currently deployed at https://rhyse76.github.io/immaculatewalls/ (no
+// custom domain yet), so `base` must match the repo name or every
+// root-relative link/asset 404s.
+//
+// Once a custom domain (e.g. immaculatewalls.com) is attached via a
+// public/CNAME file, change `site` to the domain root and `base` back to '/'.
 export default defineConfig({
-  site: 'https://immaculatewalls.com',
-  base: '/',
+  site: 'https://rhyse76.github.io/immaculatewalls',
+  base: '/immaculatewalls',
   output: 'static',
 });

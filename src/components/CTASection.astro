@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site.js';
+import { withBase } from '../utils/paths.js';
 interface Props {
   heading?: string;
   body?: string;
@@ -17,7 +18,7 @@ const {
       <p>{body}</p>
     </div>
     <div class="cta-actions">
-      <a href="/contact" class="btn btn-primary">Get a Free Quote</a>
+      <a href={withBase('/contact')} class="btn btn-primary">Get a Free Quote</a>
       <a href={`tel:${site.phone.replace(/[^0-9]/g, '')}`} class="btn btn-secondary">
         Call {site.phone}
       </a>

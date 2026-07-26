@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 import { site } from '../data/site.js';
+import { withBase } from '../utils/paths.js';
 ---
 
 <Layout title="About" description="Immaculate Drywall and Construction — a family-run drywall and painting business serving Northern Illinois and select Wisconsin locations.">
@@ -25,7 +26,7 @@ import { site } from '../data/site.js';
       </div>
       <div class="about-media">
         <img
-          src="/images/gallery/framing-and-rough-in.png"
+          src={withBase('/images/gallery/framing-and-rough-in.png')}
           alt="Drywall hanging in progress on a room addition"
         />
       </div>
