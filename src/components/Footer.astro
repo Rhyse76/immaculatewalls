@@ -7,6 +7,14 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand">
+      <img
+        src={withBase('/images/brand/logo-mark.png')}
+        alt={`${site.name} logo`}
+        class="footer-logo"
+        width="720"
+        height="758"
+        loading="lazy"
+      />
       <span class="brand-name">{site.name}</span>
       <p>{site.subTagline}</p>
     </div>
@@ -50,6 +58,13 @@ const year = new Date().getFullYear();
     grid-template-columns: 1.4fr 1fr 1fr 1fr;
     gap: 2.5rem;
     padding: 3.5rem 1.5rem;
+  }
+
+  .footer-logo {
+    width: 84px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
   }
 
   .footer-brand .brand-name {

@@ -52,6 +52,26 @@ import { withBase } from '../utils/paths.js';
     </div>
   </section>
 
+  <section class="section family-section">
+    <div class="container family-inner">
+      <div class="family-media" data-reveal>
+        <img
+          src={withBase('/images/brand/family-crew.jpg')}
+          alt="The family behind Immaculate Drywall and Construction, on and off the job"
+        />
+      </div>
+      <div class="family-copy" data-reveal style="--reveal-delay: 90ms">
+        <span class="eyebrow">Family-Run, For Real</span>
+        <h2>It's not just a tagline</h2>
+        <p>
+          From framing walls to mudding drywall, the whole family pitches in
+          &mdash; even the littlest crew member. When we say family-operated,
+          we mean it.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <CTASection />
 </Layout>
 
@@ -110,11 +130,41 @@ import { withBase } from '../utils/paths.js';
     margin-bottom: 0;
   }
 
+  .family-inner {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .family-media {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .family-media img {
+    width: 100%;
+    display: block;
+  }
+
+  .family-copy p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 46ch;
+  }
+
   @media (max-width: 860px) {
     .about-inner {
       grid-template-columns: 1fr;
     }
     .about-media {
+      order: -1;
+    }
+    .family-inner {
+      grid-template-columns: 1fr;
+    }
+    .family-media {
       order: -1;
     }
   }
