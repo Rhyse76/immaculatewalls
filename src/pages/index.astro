@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Testimonial from '../components/Testimonial.astro';
+import CTASection from '../components/CTASection.astro';
+import { site, services, testimonials, galleryImages } from '../data/site.js';
+
+const featuredServices = services.slice(0, 6);
+const featuredImages = galleryImages.slice(0, 3);
+---
+
+<Layout title="Home">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Drywall &amp; Painting &mdash; {site.serviceArea}</span>
+        <h1>{site.tagline}</h1>
+        <p class="hero-sub">{site.subTagline}</p>
+        <p class="hero-desc">
+          Family-run and built on seven-plus years of hands-on work &mdash; framing,
+          drywall, textures, and painting done right the first time.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Get a Free Quote</a>
+          <a href="/projects" class="btn btn-outline">See Our Work</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img
+          src="/images/gallery/texture-spray-application.png"
+          alt="Applying knockdown texture to an interior wall"
+          class="hero-image"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">What We Do</span>
+        <h2>Full-service drywall, framing &amp; painting</h2>
+        <p>
+          From framing a new addition to the final coat of paint, we handle the
+          whole job &mdash; or just the part you need.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        {featuredServices.map((service) => (
+          <ServiceCard title={service.title} description={service.description} />
+        ))}
+      </div>
+      <div class="services-more">
+        <a href="/services" class="btn btn-outline">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Recent Work</span>
+        <h2>A look at what we've been building</h2>
+      </div>
+      <div class="grid grid-3 work-grid">
+        {featuredImages.map((image) => (
+          <a href="/projects" class="work-item card">
+            <img src={image.src} alt={image.alt} />
+            <span class="work-tag">{image.category}</span>
+          </a>
+        ))}
+      </div>
+      <div class="services-more">
+        <a href="/projects" class="btn btn-outline">See All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Trusted by homeowners across the area</h2>
+      </div>
+      <div class="grid grid-3">
+        {testimonials.map((t) => (
+          <Testimonial quote={t.quote} name={t.name} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>
+
+<style>
+  .hero {
+    background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+    padding: 4rem 0 3rem;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-sub {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-accent-dark);
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-desc {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 48ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-media {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+
+  .services-more {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  .work-item {
+    display: block;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .work-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+
+  .work-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .work-tag {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    background: rgba(28, 43, 51, 0.85);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  @media (max-width: 860px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-media {
+      order: -1;
+    }
+  }
+</style>

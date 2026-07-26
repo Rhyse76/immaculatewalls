@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+import { site } from '../data/site.js';
+---
+
+<Layout title="About" description="Immaculate Drywall and Construction — a family-run drywall and painting business serving Northern Illinois and select Wisconsin locations.">
+  <section class="section page-hero">
+    <div class="container about-inner">
+      <div class="about-copy">
+        <span class="eyebrow">Our Story</span>
+        <h1>From a one-man show to a family business</h1>
+        <p>
+          {site.name} has been in business for over seven years. What started
+          out as a one-man show in Minnesota is now a family-operated business
+          serving {site.serviceArea}.
+        </p>
+        <p>
+          Every job &mdash; big or small &mdash; gets the same attention to
+          detail, whether that's a single patch repair or framing and drywall
+          for a full new build.
+        </p>
+        <p class="tagline">{site.tagline}</p>
+        <p class="sub-tagline">{site.subTagline}</p>
+      </div>
+      <div class="about-media">
+        <img
+          src="/images/gallery/framing-and-rough-in.png"
+          alt="Drywall hanging in progress on a room addition"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt values">
+    <div class="container">
+      <div class="grid grid-3">
+        <div class="value-card card">
+          <h3>Family-Run</h3>
+          <p>A hands-on, family-operated crew that treats every home like our own.</p>
+        </div>
+        <div class="value-card card">
+          <h3>7+ Years Experience</h3>
+          <p>From a solo start in Minnesota to serving homeowners across Northern Illinois and Wisconsin.</p>
+        </div>
+        <div class="value-card card">
+          <h3>Guaranteed Quality</h3>
+          <p>Quality we guarantee, at prices you can afford &mdash; no shortcuts, no surprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-bottom: 1rem;
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-copy p {
+    color: var(--color-text-muted);
+    font-size: 1.02rem;
+  }
+
+  .tagline {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-navy) !important;
+    font-size: 1.15rem;
+  }
+
+  .sub-tagline {
+    color: var(--color-accent-dark) !important;
+    font-weight: 600;
+  }
+
+  .about-media {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .about-media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .value-card {
+    padding: 1.75rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .value-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 860px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+    }
+    .about-media {
+      order: -1;
+    }
+  }
+</style>

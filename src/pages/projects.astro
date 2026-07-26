@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+import { galleryImages, site } from '../data/site.js';
+
+const categories = ['All', ...new Set(galleryImages.map((img) => img.category))];
+---
+
+<Layout title="Projects" description="Recent drywall, framing, and painting work from Immaculate Drywall and Construction.">
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow">Our Work</span>
+      <h1>Projects</h1>
+      <p class="page-lede">
+        A look at recent jobs, from framing to finished walls. More photos are
+        added regularly &mdash; see even more on
+        <a href={site.facebook} target="_blank" rel="noopener noreferrer" class="inline-link">Facebook</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="filter-bar" role="tablist" aria-label="Filter projects by category">
+        {categories.map((cat, i) => (
+          <button
+            class:list={['filter-btn', { active: i === 0 }]}
+            data-filter={cat}
+            type="button"
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="grid grid-3 gallery-grid" id="gallery-grid">
+        {galleryImages.map((image) => (
+          <figure class="gallery-item card" data-category={image.category}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            <figcaption>
+              <span class="work-tag">{image.category}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Like what you see?"
+    body="Let's talk about your project and get you a free quote."
+  />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-bottom: 1rem;
+  }
+  .page-lede {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    max-width: 60ch;
+  }
+  .inline-link {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .filter-btn {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-accent);
+  }
+
+  .filter-btn.active {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: #fff;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .gallery-item figcaption {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .work-tag {
+    background: rgba(28, 43, 51, 0.85);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  .gallery-item.hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      items.forEach((item) => {
+        const show = filter === 'All' || item.dataset.category === filter;
+        item.classList.toggle('hidden', !show);
+      });
+    });
+  });
+</script>

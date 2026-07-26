@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { services } from '../data/site.js';
+---
+
+<Layout title="Services" description="Drywall hanging, finishing, framing, painting, textures, and more — full-service or a la carte.">
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow">What We Do</span>
+      <h1>Services</h1>
+      <p class="page-lede">
+        Whether it's a single-room repair or a full new-construction build,
+        we handle every stage of drywall, framing, and painting.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="grid grid-3">
+        {services.map((service) => (
+          <ServiceCard title={service.title} description={service.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Not sure what you need?"
+    body="Tell us what's going on and we'll help you figure out the right fix — no obligation."
+  />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-bottom: 1rem;
+  }
+  .page-lede {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    max-width: 60ch;
+  }
+</style>
