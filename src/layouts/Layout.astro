@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { withBase } from '../utils/paths.js';
+import { site } from '../data/site.js';
 import '../styles/global.css';
 
 interface Props {
@@ -13,6 +14,30 @@ const {
   title,
   description = 'Immaculate Drywall and Construction — drywall, framing, and painting serving Northern Illinois and select Wisconsin locations.',
 } = Astro.props;
+
+const fullTitle = `${title} | Immaculate Drywall and Construction`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+if (!canonicalUrl.pathname.endsWith('/')) canonicalUrl.pathname += '/';
+const ogImageUrl = new URL(withBase('/images/brand/og-image.png'), Astro.site);
+const homeUrl = new URL(withBase('/'), Astro.site);
+const telephone = `+1${site.phone.replace(/[^0-9]/g, '')}`;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: site.name,
+  alternateName: site.shortName,
+  description,
+  image: ogImageUrl.href,
+  telephone,
+  email: site.email,
+  url: homeUrl.href,
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Northern Illinois' },
+    { '@type': 'AdministrativeArea', name: 'Wisconsin' },
+  ],
+  sameAs: [site.facebook],
+};
 ---
 
 <!doctype html>
@@ -21,11 +46,25 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-    <title>{title} | Immaculate Drywall and Construction</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={`${title} | Immaculate Drywall and Construction`} />
+    <link rel="canonical" href={canonicalUrl.href} />
+
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:image" content={ogImageUrl.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={site.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl.href} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </head>
   <body>
     <Header />
