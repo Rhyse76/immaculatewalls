@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CalBooking from '../components/CalBooking.astro';
 import { site } from '../data/site.js';
 
 const FORMSPREE_ID = 'xeeyvkgv';
@@ -17,8 +18,24 @@ const FORMSPREE_ID = 'xeeyvkgv';
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Book Online</span>
+        <h2>Schedule a Free Estimate</h2>
+        <p>Pick a time that works for you &mdash; no phone tag required.</p>
+      </div>
+      <CalBooking calLink="immaculatewalls/30min" namespace="30min" />
+    </div>
+  </section>
+
   <section class="section section-alt">
-    <div class="container contact-grid">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Or Reach Out Directly</span>
+        <h2>Prefer to call or message?</h2>
+      </div>
+      <div class="contact-grid">
       <div class="contact-info">
         <div class="info-card card">
           <h3>Phone</h3>
@@ -72,6 +89,7 @@ const FORMSPREE_ID = 'xeeyvkgv';
 
         <button type="submit" class="btn btn-primary">Send Message</button>
       </form>
+      </div>
     </div>
   </section>
 </Layout>
