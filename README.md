@@ -34,11 +34,11 @@ it isn't part of the built site.
 
 ## Before launch
 
-- [ ] Create a free [Formspree](https://formspree.io) account and swap the
-      `FORMSPREE_ID` placeholder in `src/pages/contact.astro` for a real
-      form ID so the contact form actually sends email.
-- [ ] Once a domain (e.g. `immaculatewalls.com`) is purchased and pointed at
-      GitHub Pages, add a `public/CNAME` file containing the domain name.
+- [x] Formspree account created, contact form wired to a real form ID.
+- [ ] Domain (`immaculatewalls.com`) is purchased, pending client approval
+      to attach it. Once approved: add a `public/CNAME` file with the domain
+      name, and flip `site`/`base` in `astro.config.mjs` back to domain-root
+      mode (see comments in that file).
 - [ ] Add more project photos to `public/images/gallery`.
 
 ## Deployment

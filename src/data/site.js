@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Building dreams one home at a time.',
   subTagline: 'Quality we guarantee, at prices you can afford.',
   phone: '651-508-5096',
-  email: 'immaculatewalls@gmail.com',
+  email: 'Info@ImmaculateWalls.com',
   facebook: 'https://www.facebook.com/profile.php?id=100065355915790',
   serviceArea: 'Northern Illinois and select Wisconsin locations',
 };
