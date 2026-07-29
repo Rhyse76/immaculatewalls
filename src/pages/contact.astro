@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CalBooking from '../components/CalBooking.astro';
-import { site } from '../data/site.js';
+import { site, hours } from '../data/site.js';
 
 const FORMSPREE_ID = 'xeeyvkgv';
 ---
@@ -48,6 +48,12 @@ const FORMSPREE_ID = 'xeeyvkgv';
         <div class="info-card card">
           <h3>Service Area</h3>
           <p class="info-value">{site.serviceArea}</p>
+        </div>
+        <div class="info-card card">
+          <h3>Hours</h3>
+          {hours.map((h) => (
+            <p class="info-value hours-row">{h.days}: {h.time}</p>
+          ))}
         </div>
         <div class="info-card card">
           <h3>Facebook</h3>
@@ -133,6 +139,15 @@ const FORMSPREE_ID = 'xeeyvkgv';
     font-weight: 600;
     font-size: 1.1rem;
     color: var(--color-navy);
+  }
+
+  .hours-row {
+    font-size: 0.95rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .hours-row:last-child {
+    margin-bottom: 0;
   }
 
   .contact-form {

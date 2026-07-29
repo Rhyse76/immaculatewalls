@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { withBase } from '../utils/paths.js';
-import { site } from '../data/site.js';
+import { site, hours } from '../data/site.js';
 import '../styles/global.css';
 
 interface Props {
@@ -37,6 +37,12 @@ const localBusinessSchema = {
     { '@type': 'AdministrativeArea', name: 'Wisconsin' },
   ],
   sameAs: [site.facebook],
+  openingHoursSpecification: hours.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.schemaDays,
+    opens: h.opens,
+    closes: h.closes,
+  })),
 };
 ---
 

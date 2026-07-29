@@ -9,6 +9,23 @@ export const site = {
   serviceArea: 'Northern Illinois and select Wisconsin locations',
 };
 
+export const hours = [
+  {
+    days: 'Monday – Friday',
+    time: '9:30 AM – 9:30 PM',
+    schemaDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:30',
+    closes: '21:30',
+  },
+  {
+    days: 'Saturday – Sunday',
+    time: '11:00 AM – 5:00 PM',
+    schemaDays: ['Saturday', 'Sunday'],
+    opens: '11:00',
+    closes: '17:00',
+  },
+];
+
 export const services = [
   {
     title: 'Drywall Hanging & Finishing',
