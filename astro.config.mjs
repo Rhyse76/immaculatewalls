@@ -1,17 +1,12 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Currently deployed at https://rhyse76.github.io/immaculatewalls/ (no
-// custom domain yet), so `base` must match the repo name or every
-// root-relative link/asset 404s.
-//
-// `site` is the origin ONLY (no subpath) — Astro combines site + base
-// automatically for the sitemap and canonical URLs. Once a custom domain
-// (e.g. immaculatewalls.com) is attached via a public/CNAME file, change
-// `site` to the domain root and `base` back to '/'.
+// Deployed at the custom domain immaculatewalls.com (see public/CNAME).
+// `site` is the origin ONLY — Astro combines site + base automatically
+// for the sitemap and canonical URLs.
 export default defineConfig({
-  site: 'https://rhyse76.github.io',
-  base: '/immaculatewalls',
+  site: 'https://immaculatewalls.com',
+  base: '/',
   output: 'static',
   integrations: [sitemap()],
 });
