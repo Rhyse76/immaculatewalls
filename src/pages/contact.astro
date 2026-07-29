@@ -52,7 +52,10 @@ const FORMSPREE_ID = 'xeeyvkgv';
         <div class="info-card card">
           <h3>Hours</h3>
           {hours.map((h) => (
-            <p class="info-value hours-row">{h.days}: {h.time}</p>
+            <p class="hours-row">
+              <span class="hours-days">{h.days}</span>
+              <span class="hours-time">{h.time}</span>
+            </p>
           ))}
         </div>
         <div class="info-card card">
@@ -142,12 +145,29 @@ const FORMSPREE_ID = 'xeeyvkgv';
   }
 
   .hours-row {
-    font-size: 0.95rem;
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.75rem;
   }
 
   .hours-row:last-child {
     margin-bottom: 0;
+  }
+
+  .hours-days,
+  .hours-time {
+    display: block;
+    font-family: var(--font-heading);
+  }
+
+  .hours-days {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--color-navy);
+  }
+
+  .hours-time {
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
   }
 
   .contact-form {

@@ -34,7 +34,10 @@ const year = new Date().getFullYear();
     <div class="footer-col">
       <h4>Hours</h4>
       {hours.map((h) => (
-        <p>{h.days}: {h.time}</p>
+        <p class="hours-entry">
+          <span class="hours-days">{h.days}</span>
+          <span class="hours-time">{h.time}</span>
+        </p>
       ))}
     </div>
 
@@ -105,6 +108,20 @@ const year = new Date().getFullYear();
 
   .footer-col a:hover {
     color: var(--color-accent);
+  }
+
+  .hours-entry {
+    margin-bottom: 0.7rem;
+  }
+
+  .hours-days,
+  .hours-time {
+    display: block;
+  }
+
+  .hours-days {
+    color: #fff;
+    font-weight: 600;
   }
 
   .footer-bottom {
